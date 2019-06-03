@@ -12,7 +12,6 @@ func lengthOfLongestSubstring(s string) int {
 	for i, char := range s {
 		fmt.Println(left)
 		if preIdx, ok := seen[char]; ok && seen[char] >= start {
-			fmt.Println("preIdx", preIdx, start)
 			start = preIdx + 1
 			seen[char] = i
 			continue
@@ -25,26 +24,6 @@ func lengthOfLongestSubstring(s string) int {
 	return left
 }
 
-//func lengthOfLongestSubstring(s string) int {
-//	max := 0
-//	seen := make(map[uint8]bool)
-//
-//	for i := 0; i < len(s); i++ {
-//		_, ok := seen[s[i]]
-//		if !ok {
-//			seen[s[i]] = true
-//		} else {
-//			if max < len(seen) {
-//				max = len(seen)
-//			}
-//			seen = make(map[uint8]bool)
-//			i--
-//		}
-//	}
-//
-//	return max
-//}
-
 type scenario struct {
 	input    string
 	expected int
@@ -55,22 +34,22 @@ var scenarios = []scenario{
 		input:    "abcabcbb",
 		expected: 3,
 	},
-	//{
-	//	input:    "bbbbb",
-	//	expected: 1,
-	//},
-	//{
-	//	input:    "pwwkew",
-	//	expected: 3,
-	//},
-	//{
-	//	input:    "mamma",
-	//	expected: 2,
-	//},
-	//{
-	//	input:    "",
-	//	expected: 0,
-	//},
+	{
+		input:    "bbbbb",
+		expected: 1,
+	},
+	{
+		input:    "pwwkew",
+		expected: 3,
+	},
+	{
+		input:    "mamma",
+		expected: 2,
+	},
+	{
+		input:    "",
+		expected: 0,
+	},
 }
 
 func main() {
